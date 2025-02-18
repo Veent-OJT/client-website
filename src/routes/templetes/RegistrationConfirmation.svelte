@@ -56,80 +56,79 @@
   });
 </script>
 
-<div class="min-h-screen bg-[#1a1f2e] text-white">
-  <!-- Fixed Header -->
-  <div class="fixed top-0 left-0 right-0 z-50">
-    <div class="bg-[#1a1f2e]/80 backdrop-blur-[10px]">
-      <div class="max-w-6xl mx-auto px-4 py-4">
-        <div class="flex justify-between items-center">
-          <div>
-            {#if registrationData.companyLogo}
-              <img src={registrationData.companyLogo} alt="Event Logo" class="h-8" />
-            {/if}
-          </div>
+  <div class="min-h-screen bg-[#1a1f2e] text-white">
+    <!-- Fixed Header -->
+    <div class="fixed top-0 left-0 right-0 z-50">
+      <div class="bg-[#1a1f2e]/80 backdrop-blur-[10px]">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+          <div class="flex justify-between items-center">
+            <div>
+              {#if registrationData.companyLogo}
+                <img src={registrationData.companyLogo} alt="Event Logo" class="h-8" />
+              {/if}
+            </div>
 
-          <button 
-          class="md:hidden text-white p-2"
-          on:click={toggleMobileMenu}
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {#if !isMobileMenuOpen}
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            {:else}
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            {/if}
+            <button 
+            class="md:hidden text-white p-2"
+            on:click={toggleMobileMenu}
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {#if !isMobileMenuOpen}
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              {:else}
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              {/if}
+              
+            </svg>
+          </button>
             
-          </svg>
-        </button>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+              <a href="#posts" class="text-white hover:text-gray-300 text-sm">Posts</a>
+              <a href="#contact" class="text-white hover:text-gray-300 text-sm">Contact</a>
+              <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded text-sm">
+                Sign In
+              </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
           
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="#posts" class="text-white hover:text-gray-300 text-sm">Posts</a>
-            <a href="#contact" class="text-white hover:text-gray-300 text-sm">Contact</a>
-            <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded text-sm">
-              Register now
-            </button>
           </div>
 
-          <!-- Mobile Menu Button -->
-         
+          <!-- Mobile Menu -->
+          {#if isMobileMenuOpen}
+            <div class="md:hidden py-4 px-2 space-y-4">
+              <a href="#posts" class="block text-white hover:text-gray-300 text-sm py-2">Posts</a>
+              <a href="#contact" class="block text-white hover:text-gray-300 text-sm py-2">Contact</a>
+              <button class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded text-sm">
+                Register now
+              </button>
+            </div>
+          {/if}
+          
         </div>
-
-        <!-- Mobile Menu -->
-        {#if isMobileMenuOpen}
-          <div class="md:hidden py-4 px-2 space-y-4">
-            <a href="#posts" class="block text-white hover:text-gray-300 text-sm py-2">Posts</a>
-            <a href="#contact" class="block text-white hover:text-gray-300 text-sm py-2">Contact</a>
-            <button class="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded text-sm">
-              Register now
-            </button>
-          </div>
-        {/if}
-        
       </div>
     </div>
-  </div>
 
   <!-- Hero Section with Background -->
-  <div class="relative min-h-[600px] md:h-[800px]">
+  <div class="relative min-h-fit md:h-[800px] mb-[50px] ">
     <!-- Background image container -->
     <div 
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url({registrationData.backgroundImage});"
-    >
-      <div class="absolute inset-0 bg-gradient-to-b from-[#1a1f2e] via-[#1a1f2e]/70 to-[#1a1f2e]"></div>
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[2px] mb-[-50px] "
+      style="background-image: url({registrationData.backgroundImage});">
+      <div class="absolute inset-0 bg-[#000000]/80"></div>
     </div>
 
     <!-- Content over background -->
     <div class="relative z-10 pt-20">
-      <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-6xl h-auto mx-auto px-4 mt-[60px]">
         <!-- Event Poster - Mobile -->
-        <div class="block md:hidden mb-8">
+        <div class="block md:hidden mb-8 ">
           {#if registrationData.poster}
             <img 
               src={registrationData.poster} 
               alt="Event Poster" 
-              class="w-full max-w-[300px] h-auto aspect-[3/4] object-cover rounded-lg shadow-lg mx-auto"
+              class="min-w-[100%] object-cover rounded-lg shadow-lg mx-auto"
             />
           {/if}
           
@@ -138,26 +137,32 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <!-- Event Details -->
           <div class="text-center md:text-left">
-            <div class="space-y-6">
-              <h1 class="text-3xl md:text-5xl font-bold ">{registrationData.eventName}</h1>
-              <p class="text-gray-400 text-base md:text-lg">{registrationData.description}</p>
-              
+            <div class="space-y-6 ">
+              <h1 class="text-3xl md:text-5xl font-bold  ">{registrationData.eventName}</h1>
+              <p class="text-white-400 text-base md:text-lg text-left pr-4">
+                {registrationData.description}
+              </p>
+              <!-- <div class="max-h-[200px] overflow-y-auto custom-scrollbar">
+                <p class="text-white-400 text-base md:text-lg text-left pr-4">
+                  {registrationData.description}
+                </p>
+              </div>               -->
               <button class="w-full md:w-auto border-white border-[1px] text-white px-8 py-3 rounded-md hover:bg-red-700 transition-colors text-lg font-semibold">
                 Register Now
               </button>
 
-              <div class="space-y-4 text-gray-300 bg-[#000000]/50 backdrop-blur-[20px] p-4 md:p-6 rounded-lg">
+              <div class="space-y-4 text-gray-300 bg-[#000000]/50 backdrop-blur-[5px] p-4 md:p-6 rounded-lg  ">
                 <div>
-                  <p class="font-semibold text-sm uppercase">Date</p>
-                  <p class="text-white text-base md:text-lg">{registrationData.startDate}</p>
+                  <p class="font-semibold text-sm uppercase item-start flex">Date</p>
+                  <p class="text-white text-base md:text-lg item-start flex">{registrationData.startDate} - {registrationData.endDate}</p>
                 </div>
                 <div>
-                  <p class="font-semibold text-sm uppercase">Time</p>
-                  <p class="text-white text-base md:text-lg">{registrationData.startTime} - {registrationData.endTime}</p>
+                  <p class="font-semibold text-sm uppercase item-start flex">Time</p>
+                  <p class="text-white text-base md:text-lg item-start flex">{registrationData.startTime} - {registrationData.endTime}</p>
                 </div>
                 <div>
-                  <p class="font-semibold text-sm uppercase">Venue</p>
-                  <p class="text-white text-base md:text-lg">{registrationData.location}</p>
+                  <p class="font-semibold text-sm uppercase item-start flex">Venue</p>
+                  <p class="text-white text-base md:text-lg item-start flex">{registrationData.location}</p>
                 </div>
               </div>
             </div>

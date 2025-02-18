@@ -57,7 +57,7 @@
               placeholder="subdomain"
               class="text-black flex-1 border border-gray-300 rounded-md px-3 py-2 focus:ring-red-500 focus:border-red-500"
             />
-            <span class="text-gray-500">.veent.co</span>
+            <span class="text-gray-500">.veent.io</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -218,8 +218,7 @@
         <button
           type="submit"
           class="bg-red-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-md hover:bg-red-700 transition-colors"
-        >
-          Create Event
+        >Create Event
         </button>
       </div>
     </form>
