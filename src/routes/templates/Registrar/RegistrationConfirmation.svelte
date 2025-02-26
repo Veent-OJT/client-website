@@ -8,7 +8,7 @@
   import RegisterSection from '$lib/components/section/RegisterSection.svelte';
   import ContactSection from '$lib/components/section/ContactSection.svelte';
   import { calculateCountdown } from '$lib/types/countdown';
-
+  import Footer from '$lib/components/layout/Footer.svelte';
   export let registrationData: EventData;
   
   let countdown: CountdownData = {
@@ -65,4 +65,5 @@
   <PostsSection />
   <RegisterSection />
   <ContactSection />
+  <Footer />
 </div>
